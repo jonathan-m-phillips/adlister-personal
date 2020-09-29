@@ -1,7 +1,10 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.config.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
+import com.codeup.adlister.config.Config;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,6 +28,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
 
     @Override
     public List<Ad> all() {
