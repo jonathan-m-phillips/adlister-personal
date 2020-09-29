@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.User;
 
+
 import java.sql.*;
 
 public class MySQLUsersDao extends MySQLDao implements Users {

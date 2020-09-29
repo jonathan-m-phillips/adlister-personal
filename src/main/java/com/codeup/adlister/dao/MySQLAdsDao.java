@@ -11,6 +11,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         super(config);
     }
 
+
     @Override
     public List<Ad> all() {
         PreparedStatement stmt = null;
