@@ -14,7 +14,12 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String redirect = (String) request.getSession().getAttribute("currentPage");
         if (request.getSession().getAttribute("user") != null) {
+
+            if (redirect == null) {
+                response.sendRedirect(redirect);
+            }
             response.sendRedirect("/profile");
             return;
         }
@@ -22,6 +27,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        String redirect = (String) request.getSession().getAttribute("currentPage");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
@@ -34,13 +40,13 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
-            if ((boolean)request.getSession().getAttribute("profile")) {
-                request.getSession().setAttribute("user", user);
-                response.sendRedirect("/profile");
-            } else if ((boolean)request.getSession().getAttribute("createAds")) {
-                request.getSession().setAttribute("user", user);
-                response.sendRedirect("/ads/create");
-            }
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect("/login");
+//            if (redirect == null) {
+//                response.sendRedirect(redirect);
+//            } else {
+//                response.sendRedirect("/login");
+//            }
         } else {
             response.sendRedirect("/login");
         }
