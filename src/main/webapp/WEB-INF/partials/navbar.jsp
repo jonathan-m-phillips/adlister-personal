@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -5,8 +7,23 @@
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
+<%--            This is the JSTL that states if the user is logged in, show login and register--%>
+<%--            Otherwise Create an ad and Logout will show in navbar--%>
+            <c:choose>
+                <c:when test="${users.id}">
+                    <li><a href="/ads/create">Create an Ad</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                </c:otherwise>
+            </c:choose>
+
+
+
+
+
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
