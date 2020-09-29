@@ -1,10 +1,14 @@
 package com.codeup.adlister.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+    private List categories = new ArrayList<>();
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
@@ -12,6 +16,7 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
+
 
     public Ad(long userId, String title, String description) {
         this.userId = userId;
