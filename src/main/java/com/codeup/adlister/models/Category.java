@@ -1,19 +1,30 @@
 package com.codeup.adlister.models;
 
 public class Category {
-    private String type;
+    private String categoryName;
+    private long categoryID;
 
-    public Category() {}
-
-    public Category(String type) {
-        this.type = type;
+    public Category() {
     }
 
-    public String getType() {
-        return type;
+    public Category(String categoryName, long categoryID) {
+        this.categoryName = categoryName;
+        this.categoryID = categoryID;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public long getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(long categoryID) {
+        this.categoryID = categoryID;
     }
 }

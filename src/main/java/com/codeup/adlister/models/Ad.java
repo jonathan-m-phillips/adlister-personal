@@ -8,7 +8,7 @@ public class Ad {
     private long userId;
     private String title;
     private String description;
-    private List categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
@@ -22,6 +22,14 @@ public class Ad {
         this.userId = userId;
         this.title = title;
         this.description = description;
+    }
+
+    public void addCategory(Category category) {
+        categories.add(category);
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 
     public long getId() {
