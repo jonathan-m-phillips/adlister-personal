@@ -46,6 +46,9 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
     }
 
     private Category extractCategory(ResultSet rs) throws SQLException {
+        if (! rs.next()) {
+            return null;
+        }
         return new Category(
                 rs.getString("name"),
                 rs.getLong("id")

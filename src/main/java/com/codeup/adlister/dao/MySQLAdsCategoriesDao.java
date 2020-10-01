@@ -14,14 +14,14 @@ public class MySQLAdsCategoriesDao extends MySQLDao implements AdsCategories{
         super(config);
     }
 
-    public long joiningAdsToCategories (long adId, long catId) {
+    public void joiningAdsToCategories (long adId, long catId) {
         try {
             String insertQuery = "INSERT INTO ads_categories(ad_id, category_id) VALUES (?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, adId);
             stmt.setLong(2, catId);
-            ResultSet rs = stmt.executeQuery();
-            return ;
+            stmt.executeUpdate();
+            stmt.getGeneratedKeys();
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Error in adding to ad_categories", e);
