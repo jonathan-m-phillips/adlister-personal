@@ -1,7 +1,9 @@
 package com.codeup.adlister.dao;
 
-public interface AdsCategories {
+import java.util.List;
 
-    
+public interface AdsCategories {
+    List<Long> getCategoriesByAdId(long adId);
+    long joiningAdsToCategories (long adId, long catId);
 
 }

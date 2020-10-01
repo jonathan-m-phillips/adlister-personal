@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,6 +18,11 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
+            <select class="custom-select">
+                <c:forEach var="category" items="${sessionScope.categories}">
+                    <option value="${category.categoryID}">${category.categoryName}</option>
+                </c:forEach>
+            </select>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>

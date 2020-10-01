@@ -32,8 +32,17 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
     }
 
     @Override
-    public long searchByCategoryID(Category category) {
-        return 0;
+    public Category getByCategoryID(long categoryId) {
+        PreparedStatement stmt = null;
+        try {
+            String query = "SELECT * FROM categories WHERE id = ? LIMIT 1";
+            stmt = connection.prepareStatement(query);
+            stmt.setLong(1, categoryId);
+            return extractCategory(stmt.executeQuery());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error getting category by ID", e);
+        }
     }
 
     private Category extractCategory(ResultSet rs) throws SQLException {
