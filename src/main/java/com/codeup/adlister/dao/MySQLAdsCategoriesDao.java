@@ -20,7 +20,8 @@ public class MySQLAdsCategoriesDao extends MySQLDao implements AdsCategories{
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, adId);
             stmt.setLong(2, catId);
-            return (long) stmt.executeUpdate();
+            ResultSet rs = stmt.executeQuery();
+            return ;
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Error in adding to ad_categories", e);

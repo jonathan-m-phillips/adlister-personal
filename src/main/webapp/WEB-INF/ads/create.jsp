@@ -18,7 +18,7 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
-            <select class="custom-select">
+            <select class="custom-select" name="categorySelect">
                 <c:forEach var="category" items="${sessionScope.categories}">
                     <option value="${category.categoryID}">${category.categoryName}</option>
                 </c:forEach>
